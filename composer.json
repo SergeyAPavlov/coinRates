@@ -1,0 +1,15 @@
+{
+  "name": "clavium/coinRates",
+  "description": "CoinRates for any Date",
+  "minimum-stability": "stable",
+  "license": "free",
+  "authors": [
+    {
+      "name": "Sergey Pavlov",
+      "email": "sclavium@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {"coinRates\\": "src/"}
+  }
+}

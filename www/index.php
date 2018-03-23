@@ -46,7 +46,7 @@ use coinRates\CoinAPI;
     <table border="1">
         <tr>
             <th>Количество купленных биткойнов</th>
-            <th>Дата (формат "Y/m/d") </th>
+            <th>Дата</th>
             <th>Курс</th>
             <th>Текущий курс</th>
             <th>Доходность в %</th>

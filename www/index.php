@@ -13,6 +13,7 @@ use coinRates\CoinAPI;
     $priceOld = '';
     $priceCurr = '';
     $err = '';
+    $ratio = 0;
     $doIt = false;
 
     if (isset($_GET['qual']))$qual = $_GET['qual'];
@@ -28,6 +29,7 @@ use coinRates\CoinAPI;
         if (is_null($priceOld) OR is_null($priceCurr)) {
             $err = $prices->error->getMessage();
         }else {
+            $ratio = $priceCurr/$priceOld;
             $rate = ($priceCurr/$priceOld - 1)*100 ;
             $diff = $priceCurr - $priceOld;
         }
@@ -50,6 +52,7 @@ use coinRates\CoinAPI;
             <th>Дата</th>
             <th>Курс</th>
             <th>Текущий курс</th>
+            <th>Доходность</th>
             <th>Доходность в %</th>
             <th>Доходность в долларах</th>
         </tr>
@@ -58,6 +61,7 @@ use coinRates\CoinAPI;
             <td><input type="text" name="date" value="<?= $date ?>"></td>
             <td><?= $priceOld ?></td>
             <td><?= $priceCurr ?></td>
+            <td><?= $ratio ?></td>
             <td><?= number_format($rate , 1 )?>%</td>
             <td><?= $diff ?></td>
         </tr>

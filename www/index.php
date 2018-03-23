@@ -8,11 +8,12 @@ use coinRates\CoinAPI;
     $qual = '';
     $date = '';
     $submit = '';
-    $rate = '';
+    $rate = 0;
     $diff = '';
     $priceOld = '';
     $priceCurr = '';
     $err = '';
+    $doIt = false;
 
     if (isset($_GET['qual']))$qual = $_GET['qual'];
     if (isset($_GET['date']))$date = $_GET['date'];

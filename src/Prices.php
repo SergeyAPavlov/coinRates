@@ -15,8 +15,11 @@ class Prices
     public $api;
     public $baseId;
 
+    const BINANCE = 'BINANCE_SPOT_BTC_USDT';
+
     public $format = "Y/m/d";
     public $log = [];
+    /** @var  \Throwable */
     public $error;
 
     /**

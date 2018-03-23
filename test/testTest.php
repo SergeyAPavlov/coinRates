@@ -45,7 +45,7 @@ class testTest extends TestCase
         $api = new CoinAPI('94D597CF-CA9F-46EF-B3A1-B582F6C90917');
         $pr = new Prices($api, 'BINANCE_SPOT_BTC_USDT' );
 
-        //$price1 = $pr->getPrice('2018/01/01');
+        $price1 = $pr->getPrice('2018/12/22');
         $price2 = $pr->getCurrentPrice();
 
         $this->assertTrue(is_object($pr));

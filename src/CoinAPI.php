@@ -31,11 +31,11 @@ class CoinAPI
     {
         if ($asset_id_base == null)
         {
-            throw new InvalidArgumentException("asset_id_base is required");
+            throw new \Exception("asset_id_base is required");
         }
         if ($asset_id_qoute == null)
         {
-            throw new InvalidArgumentException("asset_id_qoute is required");
+            throw new \Exception("asset_id_qoute is required");
         }
         if ($time != null)
         {
@@ -52,7 +52,7 @@ class CoinAPI
     {
         if ($asset_id_base == null)
         {
-            throw new InvalidArgumentException("asset_id_base is required");
+            throw new \Exception("asset_id_base is required");
         }
         $url = 'https://rest.coinapi.io/v1/exchangerate/' . $asset_id_base;
         return $this->CurlRequest($url);
@@ -68,11 +68,11 @@ class CoinAPI
     {
         if ($symbol_id == null)
         {
-            throw new InvalidArgumentException("symbol_id is required");
+            throw new \Exception("symbol_id is required");
         }
         if ($period_id == null)
         {
-            throw new InvalidArgumentException("period_id is required");
+            throw new \Exception("period_id is required");
         }
         if ($limit == null)
         {
@@ -88,15 +88,15 @@ class CoinAPI
     {
         if ($symbol_id == null)
         {
-            throw new InvalidArgumentException("symbol_id is required");
+            throw new \Exception("symbol_id is required");
         }
         if ($period_id == null)
         {
-            throw new InvalidArgumentException("period_id is required");
+            throw new \Exception("period_id is required");
         }
         if ($time_start == null)
         {
-            throw new InvalidArgumentException("time_start is required");
+            throw new \Exception("time_start is required");
         }
         $time_start = $this->FormatDateTime($time_start);
         if ($time_end == null && $limit != null)
@@ -146,11 +146,11 @@ class CoinAPI
     {
         if ($symbol_id == null)
         {
-            throw new InvalidArgumentException("symbol_id is required");
+            throw new \Exception("symbol_id is required");
         }
         if ($time_start == null)
         {
-            throw new InvalidArgumentException("time_start is required");
+            throw new \Exception("time_start is required");
         }
         $time_start = $this->FormatDateTime($time_start);
         if ($time_end == null && $limit != null)
@@ -211,11 +211,11 @@ class CoinAPI
     {
         if ($symbol_id == null)
         {
-            throw new InvalidArgumentException("symbol_id is required");
+            throw new \Exception("symbol_id is required");
         }
         if ($time_start == null)
         {
-            throw new InvalidArgumentException("time_start is required");
+            throw new \Exception("time_start is required");
         }
         $time_start = $this->FormatDateTime($time_start);
         if ($time_end == null && $limit != null)
@@ -255,7 +255,7 @@ class CoinAPI
     {
         if ($symbol_id == null)
         {
-            throw new InvalidArgumentException("symbol_id is required");
+            throw new \Exception("symbol_id is required");
         }
         if ($limit == null)
         {
@@ -271,11 +271,11 @@ class CoinAPI
     {
         if ($symbol_id == null)
         {
-            throw new InvalidArgumentException("symbol_id is required");
+            throw new \Exception("symbol_id is required");
         }
         if ($time_start == null)
         {
-            throw new InvalidArgumentException("time_start is required");
+            throw new \Exception("time_start is required");
         }
         $time_start = $this->FormatDateTime($time_start);
         if ($time_end == null && $limit != null)
@@ -315,7 +315,7 @@ class CoinAPI
     {
         if ($time_start == null)
         {
-            throw new InvalidArgumentException("time_start is required");
+            throw new \Exception("time_start is required");
         }
         $time_start = $this->FormatDateTime($time_start);
         if ($time_end == null && $limit != null)
@@ -361,23 +361,23 @@ class CoinAPI
         {
             if (curl_error($ch))
             {
-                throw new Exception(curl_error($ch));
+                throw new \Exception(curl_error($ch));
             }
             else
             {
-                throw new Exception($info);
+                throw new \Exception($info);
             }
         }
         $json_data = json_decode($output);
         if ($json_data == NULL)
         {
             // json parsing failed
-            throw new Exception($output);
+            throw new \Exception($output);
         }
         $http_status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         if ($http_status_code != 200)
         {
-            throw new Exception($json_data);
+            throw new \Exception($json_data);
         }
         curl_close($ch);
         return $json_data;

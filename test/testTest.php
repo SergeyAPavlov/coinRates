@@ -33,7 +33,7 @@ class testTest extends TestCase
 
         $asset_id_base = 'BTC';
         $asset_id_qoute = "USD";
-        $timestr = '2018/01/01';
+        $timestr = '2017/11/20';
         $format = "Y/m/d";
         $time = DateTime::createFromFormat($format, $timestr);
 
@@ -45,7 +45,7 @@ class testTest extends TestCase
         $api = new CoinAPI('94D597CF-CA9F-46EF-B3A1-B582F6C90917');
         $pr = new Prices($api, 'BINANCE_SPOT_BTC_USDT' );
 
-        $price1 = $pr->getPrice('2018/12/22');
+        $price1 = $pr->getPrice('2016/12/22');
         $price2 = $pr->getCurrentPrice();
 
         $this->assertTrue(is_object($pr));

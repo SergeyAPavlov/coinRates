@@ -18,6 +18,8 @@ class Prices
     const BINANCE = 'BINANCE_SPOT_BTC_USDT';
 
     public $format = "Y/m/d";
+    public $oldestDate = '2017/12/18';
+
     public $log = [];
     /** @var  \Throwable */
     public $error;
@@ -43,10 +45,16 @@ class Prices
     {
         try {
             $tt = $this->formatTime($time);
+            $today =  new DateTime("now");
+            $diff = ($today <= $tt);
+            if ($diff) Throw new \Exception('Запрошенная дата не ранее сегодняшней');
+            $oldday = DateTime::createFromFormat($this->format, $this->oldestDate);
+            $diff1 = ($oldday > $tt);
+            if ($diff1) Throw new \Exception('Запрошенная дата слишком ранняя для данного АПИ');
             $hist = current($this->api->GetOHLCVHistory($this->baseId, '1DAY', $tt, null, 1));
             $res = $hist->price_open;
             return $res;
-        } catch (\Throwable $t){
+        } catch (\Exception $t){
             $this->log[] = $t->getMessage();
             $this->error = $t;
             return null;

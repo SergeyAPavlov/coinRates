@@ -26,8 +26,8 @@ use coinRates\CoinAPI;
         $prices = new Prices($api, $base);
         $priceOld = $prices->getPrice($date);
         $priceCurr = $prices->getCurrentPrice();
-        if (is_null($priceOld) OR is_null($priceCurr)) {
-            $err = $prices->error->getMessage();
+        if (empty($priceOld) OR empty($priceCurr)) {
+            $err = "Ошибка запроса: ".$prices->error->getMessage();
         }else {
             $ratio = $priceCurr/$priceOld;
             $rate = ($priceCurr/$priceOld - 1)*100 ;
